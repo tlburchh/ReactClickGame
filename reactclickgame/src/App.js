@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import FriendCard from "./components/AlphabateCard";
+import AlphabetCard from "./components/AlphabetCard";
 import Wrapper from "./components/Wrapper";
 import Title from "./components/Title";
-import alphabet from "./selection.json";
+import alphabet from "./Alphabet.json";
 import "./App.css";
 
 class App extends Component {
@@ -11,25 +11,25 @@ class App extends Component {
     alphabet
   };
 
-  removeFriend = id => {
+  removeLetter = id => {
     // Filter this.state.alphabet for alphabet with an id not equal to the id being removed
-    const alphabet = this.state.alphabet.filter(friend => friend.id !== id);
+    const alphabet = this.state.alphabet.filter(letter => letter.id !== id);
     // Set this.state.alphabet equal to the new alphabet array
     this.setState({ alphabet });
   };
 
-  // Map over this.state.alphabet and render a FriendCard component for each friend object
+  // Map over this.state.alphabet and render a AlphabetCard component for each Letter object
   render() {
     return (
       <Wrapper>
-        <Title>alphabet List</Title>
+        <Title>Alphabet List</Title>
         {this.state.alphabet.map(letter => (
-          <FriendCard
-            removeFriend={this.removeLetter}
+          <AlphabetCard
+            removeLetter={this.removeLetter}
             id={letter.id}
             key={letter.id}
             name={letter.name}
-            // image={letter.image}
+            image={letter.image}
 
           />
         ))}
