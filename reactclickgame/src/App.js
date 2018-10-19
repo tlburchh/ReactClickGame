@@ -8,16 +8,36 @@ import "./App.css";
 class App extends Component {
   // Setting this.state.alphabet to the alphabet json array
   state = {
-    alphabet
+    alphabet,
+    // randomList: []
   };
+  
+  selectLetter = id => {
 
-  removeLetter = id => {
-    // Filter this.state.alphabet for alphabet with an id not equal to the id being removed
-    const alphabet = this.state.alphabet.filter(letter => letter.id !== id);
-    // Set this.state.alphabet equal to the new alphabet array
+    let alphabet = this.state.alphabet.filter(letter => letter.id !== id);
+    
+    let i = this.alphabet.length;
+    if ( i === 0 ) return false;
+    while ( --i ) {
+       let j = Math.floor( Math.random() * ( i + 1 ) );
+       let temp = alphabet[i];
+       alphabet[i]= alphabet[j];
+       alphabet[j] = temp;
+  
     this.setState({ alphabet });
   };
-
+  
+//   randomList = alphabet => {
+//     const i = this.state.alphabet.length;
+//     if ( i === 0 ) return false;
+//     while ( --i ) {
+//        let j = Math.floor( Math.random() * ( i + 1 ) );
+//        let temp = alphabet[i];
+//        alphabet[i]= alphabet[j];
+//        alphabet[j] = temp;
+//        return alphabet;
+// }
+  }
   // Map over this.state.alphabet and render a AlphabetCard component for each Letter object
   render() {
     return (
@@ -25,7 +45,8 @@ class App extends Component {
         <Title>Alphabet List</Title>
         {this.state.alphabet.map(letter => (
           <AlphabetCard
-            removeLetter={this.removeLetter}
+            // randomList = {this.randomList}
+            selectLetter={this.selectLetter}
             id={letter.id}
             key={letter.id}
             name={letter.name}
