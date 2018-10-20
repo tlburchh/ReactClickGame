@@ -8,7 +8,7 @@ import "./App.css";
 class App extends Component {
   // Setting this.state.alphabet to the alphabet json array
   state = {
-    alphabet,
+    alphabet
     // randomList: []
   };
   
@@ -16,7 +16,7 @@ class App extends Component {
 
     let alphabet = this.state.alphabet.filter(letter => letter.id !== id);
     
-    let i = this.alphabet.length;
+    let i = alphabet.length;
     if ( i === 0 ) return false;
     while ( --i ) {
        let j = Math.floor( Math.random() * ( i + 1 ) );
